@@ -1,0 +1,42 @@
+import org.json.JSONObject;
+
+public class JsonExample {
+    public static void main(String[] args) {
+        // Create a JSON object
+        JSONObject jsonObject = new JSONObject();
+
+        // Add data to the JSON object
+        jsonObject.put("name", "Alice");
+        jsonObject.put("age", 30);
+        jsonObject.put("city", "New York");
+
+        // Create a JSON array and add it to the object
+        jsonObject.put("hobbies", new JSONArray()
+            .put("reading")
+            .put("traveling")
+            .put("swimming"));
+
+        // Print the JSON object
+        System.out.println("JSON Object:");
+        System.out.println(jsonObject.toString(4)); // Pretty print with 4 spaces
+
+        // Accessing data from the JSON object
+        String name = jsonObject.getString("name");
+        int age = jsonObject.getInt("age");
+        String city = jsonObject.getString("city");
+        JSONArray hobbies = jsonObject.getJSONArray("hobbies");
+
+        System.out.println("\nExtracted Data:");
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("City: " + city);
+        System.out.print("Hobbies: ");
+        for (int i = 0; i < hobbies.length(); i++) {
+            System.out.print(hobbies.getString(i));
+            if (i < hobbies.length() - 1) {
+                System.out.print(", ");
+            }
+        }
+    }
+}
+
